@@ -1,0 +1,12 @@
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\bin\Debug\netcoreapp2.0\SCORPIO.deps.json
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\bin\Debug\netcoreapp2.0\SCORPIO.runtimeconfig.json
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\bin\Debug\netcoreapp2.0\SCORPIO.runtimeconfig.dev.json
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\bin\Debug\netcoreapp2.0\SCORPIO.dll
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\bin\Debug\netcoreapp2.0\SCORPIO.pdb
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\obj\Debug\netcoreapp2.0\SCORPIO.csprojAssemblyReference.cache
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\obj\Debug\netcoreapp2.0\SCORPIO.csproj.CoreCompileInputs.cache
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\obj\Debug\netcoreapp2.0\SCORPIO.AssemblyInfoInputs.cache
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\obj\Debug\netcoreapp2.0\SCORPIO.AssemblyInfo.cs
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\obj\Debug\netcoreapp2.0\SCORPIO.dll
+C:\Users\Sistemas\Documents\Visual Studio 2017\Projects\SCORPIO\SCORPIO\SCORPIO\obj\Debug\netcoreapp2.0\SCORPIO.pdb
