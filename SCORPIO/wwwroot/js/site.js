@@ -252,7 +252,7 @@ var editarEstado = (id, fun) => {
 var editarCategoria = () => {
     var action = 'Categorias/editarCategoria' //llama el metodo que se localiza en Categorias.js
     var categoria = new Categorias("", "", "", action);
-    categoria.editarCategoria(idCategoria, "estado");
+    categoria.editarCategoria(idCategoria, funcion);
 }
 
  

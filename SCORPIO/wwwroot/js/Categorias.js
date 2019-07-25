@@ -112,36 +112,22 @@ class Categorias {
     }
 
     editarCategoria(id, funcion) {
-        var nombre = null;
-        var descripcion = null;
-        var estado = null;
-        var action = null;
-        switch (funcion) {
-            case "estado":
-                var response = JSON.parse(localStorage.getItem("categoria"));
-                nombre = response[0].nombre;
-                descripcion = response[0].descripcion;
-                estado = response[0].estado;
-                localStorage.removeItem("categoria");
-                this.editar(id, nombre, descripcion, estado, funcion);
-                break;
-            default:
-                break;
-        }
-    }
-
-    editar(id, nombre, descripcion, estado, funcion) {
         var action = this.action;
+        var response = JSON.parse(localStorage.getItem("categoria"));
+        var nombre = response[0].nombre;
+        var descripcion = response[0].descripcion;
+        var estado = response[0].estado;
+        localStorage.removeItem("categoria");
         $.ajax({
             type: "POST",
             url: action,
             data: { id, nombre, descripcion, estado, funcion },
             success: (response) => {
-                console.log("Desde el metodo editar en JS");
                 console.log(response);
                 this.restablecer();
             }
         });
+
     }
 
     restablecer() {
