@@ -1,15 +1,20 @@
 ﻿@model IEnumerable<SCORPIO.Models.Categoria>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Categorias";
 }
 
-<h2>Index</h2>
+<h2>Categorias</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a data-toggle="modal" data-target="#modalScorpion" class="btn btn-info">Crear categoria</a>
 </p>
-<table class="table">
+<div class="form-group">
+    <div class="col-md-6">
+        <input id="filtrar" name="filtrar" placeholder="Buscar" onkeyup="filtrarDatos(1);" class="form-control"/>
+    </div>
+</div>
+@*<table class="table">
     <thead>
         <tr>
                 <th>
@@ -44,4 +49,89 @@
         </tr>
 }
     </tbody>
+</table>*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Opciones
+            </th>
+        </tr>
+    </thead>
+    <tbody id="resultSearch"></tbody>
 </table>
+<div id="paginado"></div>
+
+<!--Modal Crear-->
+<div class="modal fade" id="modalScorpion" tabindex="-1" role="dialog" arialabelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" arialabel="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Agregar categoria</h4>
+            </div>
+            <div class="modal-body">
+                <form asp-action="">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Nombre" class="col-md-2 controllabel">Nombre</label>
+                            <div class="col-md-10">
+                                <input for="Nombre" id="Nombre" placeholder="Nombre"
+                                       name="Nombre" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Descripcion" class="col-md-2 controllabel">Descripcion</label>
+                            <div class="col-md-10">
+                                <input for="Descripcion" id="Descripcion"
+                                       placeholder="Descripcion" name="Descripcion" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Estado" class="col-md-2 controllabel">Estado</label>
+                            <div class="col-md-10">
+                                <select id='Estado' class="form-control">
+                                    <option value='0'>Seleccione un estado</option>
+                                    <option value='true'>Activo</option>
+                                    <option value='false'>No activo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label id="mensaje" class="col-md-2 control-label"></label>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" onclick="agregarCategoria()" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Modifica Estado-->
+<div class="modal fade" id="ModalEstado" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="titleCategoria" class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" onclick="editarCategoria()" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

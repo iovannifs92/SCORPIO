@@ -3,6 +3,10 @@ $('#modalEditar').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })
 
+$('#modalScorpion').on('shown.bs.modal', function () {
+    $('#Nombre').focus()
+})
+
 function getUsuario(id, action) {
     $.ajax({
         type: "POST",
@@ -137,7 +141,7 @@ function editarUsuario(action) {
             securityStamp, twoFactorEnabled, selectRole
         },
         success: function (response) {
-            if (response == "Save") {
+            if (response === "Save") {
                 window.location.href = "Usuarios";
             }
             else {
@@ -195,7 +199,7 @@ function crearUsuario(action) {
                     email, phoneNumber, passwordHash, selectRole
                 },
                 success: function (response) {
-                    if (response == "Save") {
+                    if (response === "Save") {
                         window.location.href = "Usuarios";
                     }
                     else {
@@ -208,6 +212,47 @@ function crearUsuario(action) {
 
 }
 
-function probandoGit() { }
+$().ready(() => {
+    document.getElementById("filtrar").focus();
+    filtrarDatos(1);
+});
+
+var idCategoria;
+var funcion;
+
+var agregarCategoria = () => {
+    var nombre = document.getElementById("Nombre").value;
+    var descripcion = document.getElementById("Descripcion").value;
+    var estados = document.getElementById("Estado");
+    var estado = estados.options[estados.selectedIndex].value;
+    if (funcion == 0) {
+        var action = "Categorias/guardarCategoria";
+    } else {
+        var action = "Categorias/editarCategoria";
+    }
+    var categoria = new Categorias(nombre, descripcion, estado, action);
+    categoria.agregarCategoria(idCategoria,funcion);
+}
+
+var filtrarDatos = (numPagina) => {
+    var valor = document.getElementById("filtrar").value;
+    var action = 'Categorias/filtrarDatos';
+    var categoria = new Categorias(valor, "", "", action);
+    categoria.filtrarDatos(numPagina);
+}
+
+var editarEstado = (id, fun) => {
+    idCategoria = id;
+    funcion = fun;
+    var action = 'Categorias/getCategorias';
+    var categoria = new Categorias("", "", "", action);
+    categoria.getCategoria(id, funcion);
+}
+
+var editarCategoria = () => {
+    var action = 'Categorias/editarCategoria' //llama el metodo que se localiza en Categorias.js
+    var categoria = new Categorias("", "", "", action);
+    categoria.editarCategoria(idCategoria, "estado");
+}
 
  

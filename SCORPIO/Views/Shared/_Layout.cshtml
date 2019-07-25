@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SCORPIO</title>
+    <title>@ViewData["Title"] </title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -30,9 +30,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Acerca de</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contacto</a></li>
+                    <li><a asp-area="" asp-controller="Categorias" asp-action="Index">Categorias</a></li>
+                    <li><a asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -42,13 +44,19 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - SCORPIO</p>
+            <div class="clearfix">
+                <div class="col-md-4" style="padding-left: 0px;  padding-right: 0px; width: 150px; float:left;">
+                    <img src="~/images/logoFooter.png" class="img-responsive" style="float:left;">
+                    @*<p>&copy; 2019 - SCORPIO</p>*@
+                </div>
+            </div>            
         </footer>
     </div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/Categorias.js" asp-append-version="true"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
