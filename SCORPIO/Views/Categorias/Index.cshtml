@@ -1,6 +1,4 @@
-﻿@model IEnumerable<SCORPIO.Models.Categoria>
-
-@{
+﻿@{
     ViewData["Title"] = "Categorias";
 }
 
@@ -11,57 +9,21 @@
 </p>
 <div class="form-group">
     <div class="col-md-6">
-        <input id="filtrar" name="filtrar" placeholder="Buscar" onkeyup="filtrarDatos(1);" class="form-control"/>
+        <input id="filtrar" name="filtrar" placeholder="Buscar" onkeyup="filtrarDatos(1, 'nombre');" class="form-control"/>
     </div>
 </div>
-@*<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Descripcion)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Estado)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CategoriaID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CategoriaID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CategoriaID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                Nombre
+                <a href="#" onclick="filtrarDatos(1,'nombre')">Nombre</a> 
             </th>
             <th>
-                Descripcion
+                <a href="#" onclick="filtrarDatos(1,'des')">Descripción</a>
             </th>
             <th>
-                Estado
+                <a href="#" onclick="filtrarDatos(1,'estado')">Estado</a>
             </th>
             <th>
                 Opciones

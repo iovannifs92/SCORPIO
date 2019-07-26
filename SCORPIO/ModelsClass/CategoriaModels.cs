@@ -37,23 +37,49 @@ namespace SCORPIO.ModelsClass
             return errorList;
         }
 
-        public List<object[]> filtrarDatos(int numPagina, string valor) {
-            int count = 0, cant, numRegistros = 0, inicio = 0, reg_por_pagina = 10, 
+        public List<object[]> filtrarDatos(int numPagina, string valor, string order) {
+            int count = 0, cant, numRegistros = 0, inicio = 0, reg_por_pagina = 3, 
                 cant_paginas, pagina;
             string dataFilter = "", paginador = "", Estado = null;
             List<object[]> data = new List<object[]>();
             IEnumerable<Categoria> query;
-            var categorias = context.Categoria.OrderBy(c => c.Nombre).ToList();
+            List<Categoria> categorias = null;
+
+            switch (order)
+            {
+                case "nombre":
+                    categorias = context.Categoria.OrderBy(c => c.Nombre).ToList();
+                    break;
+                case "des":
+                    categorias = context.Categoria.OrderBy(c => c.Descripcion).ToList();
+                    break;
+                case "estado":
+                    categorias = context.Categoria.OrderBy(c => c.Estado).ToList();
+                    break;
+            }
+
             numRegistros = categorias.Count;
+            //if ((numRegistros % reg_por_pagina) > 0)
+            //{
+            //    numRegistros += 1;
+            //}
             inicio = (numPagina - 1) * reg_por_pagina;
-            cant_paginas = (numRegistros / reg_por_pagina);
+
+            if ((numRegistros % reg_por_pagina)>0)
+            {
+                cant_paginas = (numRegistros / reg_por_pagina)+1;
+            }
+            else
+            {
+                cant_paginas = numRegistros / reg_por_pagina;
+            }
+
             if (valor == "null")
             {
                 query = categorias.Skip(inicio).Take(reg_por_pagina);
             }
             else
             {
-                //query = categorias.Where(c => c.Nombre.StartsWith(valor) || c.Descripcion.StartsWith(valor)).Skip(inicio).Take(reg_por_pagina);
                 query = categorias.Where(c => c.Nombre.StartsWith(valor) || c.Descripcion.StartsWith(valor)).Skip(inicio).Take(reg_por_pagina);
             }
             cant = query.Count();
@@ -80,6 +106,25 @@ namespace SCORPIO.ModelsClass
                         + item.CategoriaID + ',' + 1 + ")' class='btn btn-success'>Editar</a>" +
                         "</td>" +
                     "</tr>";
+            }
+            if (valor == "null")
+            {
+                if (numPagina > 1)
+                {
+                    pagina = numPagina - 1;
+                    paginador += "<a class='btn btn-default' onclick='filtrarDatos(" + 1 + ',' + '"' + order + '"' + ")'> << </a>" +
+                    "<a class='btn btn-default' onclick='filtrarDatos(" + pagina + ',' + '"' + order + '"' + ")'> < </a>";
+                }
+                if (1 < cant_paginas)
+                {
+                    paginador += "<strong class='btn btn-success'>" + numPagina + ".de." + cant_paginas + "</strong>";
+                }
+                if (numPagina < cant_paginas)
+                {
+                    pagina = numPagina + 1;
+                    paginador += "<a class='btn btn-default' onclick='filtrarDatos(" + pagina + ',' + '"' + order + '"' + ")'>  > </a>" +
+                                 "<a class='btn btn-default' onclick='filtrarDatos(" + cant_paginas + ',' + '"' + order + '"' + ")'> >> </a>";
+                }
             }
             object[] dataObj = { dataFilter, paginador };
             data.Add(dataObj);

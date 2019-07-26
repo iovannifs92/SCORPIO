@@ -36,16 +36,7 @@ class Categorias {
                             console.log("Hola");
                             console.log(response);
                             $.each(response, (index, val) => {
-                                //console.log("response del each");
-                                //console.log(response); 
-                                //console.log("index del each");
-                                //console.log(index);
-                                //console.log("val del each");
-                                //console.log(val);
                                 mensaje = val.description;
-                                console.log("mensaje del each");
-                                console.log(funcion);
-                                console.log(mensaje);
 
                             });
                             if (mensaje === "Save") {
@@ -57,12 +48,12 @@ class Categorias {
                             //console.log(response);
                         }
                     });
-                }
+                }       
             }
         }
     }
 
-    filtrarDatos(numPagina) {
+    filtrarDatos(numPagina, order) {
         var valor = this.nombre;
         var action = this.action;
         if (valor == "") {
@@ -71,12 +62,12 @@ class Categorias {
         $.ajax({
             type: "POST",
             url: action,
-            data: { valor, numPagina },
+            data: { valor, numPagina, order },
             success: (response) => {
                 console.log(response);
                 $.each(response, (index, val) => {
-                    $("#resultSearch").html(val[0]);
-                    $("#paginado").html(val[1]);
+                    $("#resultSearch").html(val[0]);//   dataObj {dataFilter [posicion 0], paginador [posision 1] CategoriasController.cs}
+                    $("#paginado").html(val[1]); //div del paginador
                 });
             }
         });
@@ -141,6 +132,6 @@ class Categorias {
         document.getElementById("Estado").selectedIndex = 0;
         $('#modalScorpion').modal('hide');
         $('#ModalEstado').modal('hide');
-        filtrarDatos(1);
+        filtrarDatos(1, "nombre");
     }
 }

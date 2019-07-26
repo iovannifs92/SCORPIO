@@ -214,7 +214,7 @@ function crearUsuario(action) {
 
 $().ready(() => {
     document.getElementById("filtrar").focus();
-    filtrarDatos(1);
+    filtrarDatos(1, "nombre");
 });
 
 var idCategoria;
@@ -237,11 +237,11 @@ var agregarCategoria = () => {
     funcion = 0;
 }
 
-var filtrarDatos = (numPagina) => {//Se inicializa al cargar la página y al agregar o modificar los datos 
+var filtrarDatos = (numPagina, order) => {//Se inicializa al cargar la página y al agregar o modificar los datos 
     var valor = document.getElementById("filtrar").value;
     var action = 'Categorias/filtrarDatos';
     var categoria = new Categorias(valor, "", "", action);
-    categoria.filtrarDatos(numPagina);
+    categoria.filtrarDatos(numPagina, order);
 }
 
 var editarEstado = (id, fun) => {
