@@ -218,7 +218,7 @@ $().ready(() => {
 });
 
 var idCategoria;
-var funcion;
+var funcion=0;
 
 var agregarCategoria = () => {
     var nombre = document.getElementById("Nombre").value;
@@ -226,15 +226,18 @@ var agregarCategoria = () => {
     var estados = document.getElementById("Estado");
     var estado = estados.options[estados.selectedIndex].value;
     if (funcion == 0) {
+        console.log("############# Va a GUARDAR la categoria #############");
         var action = "Categorias/guardarCategoria";
     } else {
+        console.log("############# Va a EDITAR la categoria #############");
         var action = "Categorias/editarCategoria";
     }
     var categoria = new Categorias(nombre, descripcion, estado, action);
-    categoria.agregarCategoria(idCategoria,funcion);
+    categoria.agregarCategoria(idCategoria, funcion);
+    funcion = 0;
 }
 
-var filtrarDatos = (numPagina) => {
+var filtrarDatos = (numPagina) => {//Se inicializa al cargar la página y al agregar o modificar los datos 
     var valor = document.getElementById("filtrar").value;
     var action = 'Categorias/filtrarDatos';
     var categoria = new Categorias(valor, "", "", action);

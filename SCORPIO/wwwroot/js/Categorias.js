@@ -44,6 +44,7 @@ class Categorias {
                                 //console.log(val);
                                 mensaje = val.description;
                                 console.log("mensaje del each");
+                                console.log(funcion);
                                 console.log(mensaje);
 
                             });
@@ -118,16 +119,19 @@ class Categorias {
         var descripcion = response[0].descripcion;
         var estado = response[0].estado;
         localStorage.removeItem("categoria");
+
         $.ajax({
             type: "POST",
             url: action,
             data: { id, nombre, descripcion, estado, funcion },
             success: (response) => {
+                console.log("Desde el metodo editar en JS");
+                console.log(funcion);
                 console.log(response);
                 this.restablecer();
             }
         });
-
+        
     }
 
     restablecer() {
