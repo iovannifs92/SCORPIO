@@ -80,7 +80,7 @@ namespace SCORPIO.ModelsClass
             }
             else
             {
-                query = categorias.Where(c => c.Nombre.StartsWith(valor) || c.Descripcion.StartsWith(valor)).Skip(inicio).Take(reg_por_pagina);
+                query = categorias.Where(c => c.Nombre.StartsWith(valor, StringComparison.OrdinalIgnoreCase) || c.Descripcion.StartsWith(valor, StringComparison.OrdinalIgnoreCase)).Skip(inicio).Take(reg_por_pagina);
             }
             cant = query.Count();
             foreach (var item in query)
